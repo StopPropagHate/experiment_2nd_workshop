@@ -1,0 +1,33 @@
+name: t-davidson
+channels:
+  - defaults
+dependencies:
+  - blas=1.0=mkl
+  - certifi=2018.4.16=py27_0
+  - icc_rt=2017.0.4=h97af966_0
+  - intel-openmp=2018.0.0=8
+  - mkl=2018.0.2=1
+  - mkl_fft=1.0.1=py27hc997a72_0
+  - nltk=3.3.0=py27_0
+  - numpy=1.14.3=py27h911edcf_1
+  - numpy-base=1.14.3=py27h917549b_1
+  - pandas=0.23.0=py27h39f3610_0
+  - pip=10.0.1=py27_0
+  - python=2.7.15=he216670_0
+  - python-dateutil=2.7.3=py27_0
+  - pytz=2018.4=py27_0
+  - scikit-learn=0.19.1=py27he00e316_0
+  - scipy=1.1.0=py27ha6b90e7_0
+  - setuptools=39.2.0=py27_0
+  - six=1.11.0=py27ha5e1701_1
+  - vc=9=h7299396_1
+  - vs2008_runtime=9.00.30729.1=hfaea7d5_1
+  - wheel=0.31.1=py27_0
+  - wincertstore=0.2=py27hf04cefb_0
+  - pip:
+    - pattern==2.6
+    - pyphen==0.9.4
+    - repoze.lru==0.7
+    - textstat==0.4.1
+prefix: C:\Users\Ze\Anaconda3\envs\t-davidson
+
