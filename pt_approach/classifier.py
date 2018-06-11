@@ -10,32 +10,39 @@ This file contains code to
     (c) Run the classifier on the transformed
     data and return results.
 """
-
-import pickle
-import numpy as np
-import pandas as pd
-from sklearn.externals import joblib
-from sklearn.svm import LinearSVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_selection import SelectFromModel
-from sklearn.feature_extraction.text import TfidfVectorizer
+#import pickle
+#import numpy as np
+#import scipy
+#import pandas as pd
+#from sklearn.externals import joblib
+#from sklearn.svm import LinearSVC
+#from sklearn.linear_model import LogisticRegression
+#from sklearn.feature_selection import SelectFromModel
+#from sklearn.feature_extraction.text import TfidfVectorizer
 import nltk
 from nltk.stem.porter import *
+from nltk.stem.rslp import RSLPStemmer
 import string
 import re
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer as VS
+from sentimento import SentiLex
 from textstat.textstat import *
 
 
-stopwords = nltk.corpus.stopwords.words("english")
+
+stopwords = nltk.corpus.stopwords.words("portuguese")
 
 other_exclusions = ["#ff", "ff", "rt"]
 stopwords.extend(other_exclusions)
 
-sentiment_analyzer = VS()
 
-stemmer = PorterStemmer()
+
+sentiment_analyzer = SentiLex()
+
+stemmer = RSLPStemmer()
+
+
 
 
 def preprocess(text_string):
@@ -58,6 +65,7 @@ def preprocess(text_string):
     #parsed_text = parsed_text.code("utf-8", errors='ignore')
     return parsed_text
 
+
 def tokenize(tweet):
     """Removes punctuation & excess whitespace, sets to lowercase,
     and stems tweets. Returns a list of stemmed tokens."""
@@ -78,7 +86,9 @@ def get_pos_tags(tweets):
     tweet_tags = []
     for t in tweets:
         tokens = basic_tokenize(preprocess(t))
+        # this
         tags = nltk.pos_tag(tokens)
+
         tag_list = [x[1] for x in tags]
         #for i in range(0, len(tokens)):
         tag_str = " ".join(tag_list)
@@ -117,7 +127,8 @@ def other_features_(tweet):
     This is modified to only include those features in the final
     model."""
 
-    sentiment = sentiment_analyzer.polarity_scores(tweet)
+    #needs to be replaced by sentilex
+    sentiment = sentiment_analyzer.get_sentiment_tweet(tokenize(tweet))
 
     words = preprocess(tweet) #Get text only
 
@@ -136,7 +147,7 @@ def other_features_(tweet):
 
     twitter_objs = count_twitter_objs(tweet) #Count #, @, and http://
     features = [FKRA, FRE, syllables, num_chars, num_chars_total, num_terms, num_words,
-                num_unique_terms, sentiment['compound'],
+                num_unique_terms, sentiment,
                 twitter_objs[2], twitter_objs[1],]
     #features = pandas.DataFrame(features)
     return features
@@ -201,70 +212,74 @@ def class_to_name(class_label):
     else:
         return "No label"
 
-def get_tweets_predictions(tweets, perform_prints=True):
-    fixed_tweets = []
-    for i, t_orig in enumerate(tweets):
-        s = t_orig
-        try:
-            s = s.encode("latin1")
-        except:
+
+if False:
+
+    def get_tweets_predictions(tweets, perform_prints=True):
+        fixed_tweets = []
+        for i, t_orig in enumerate(tweets):
+            s = t_orig
             try:
-                s = s.encode("utf-8")
+                s = s.encode("latin1")
             except:
-                pass
-        if type(s) != unicode:
-            fixed_tweets.append(unicode(s, errors="ignore"))
-        else:
-            fixed_tweets.append(s)
-    assert len(tweets) == len(fixed_tweets), "shouldn't remove any tweets"
-    tweets = fixed_tweets
-    print (len(tweets), " tweets to classify")
+                try:
+                    s = s.encode("utf-8")
+                except:
+                    pass
+            if type(s) != unicode:
+                fixed_tweets.append(unicode(s, errors="ignore"))
+            else:
+                fixed_tweets.append(s)
+        assert len(tweets) == len(fixed_tweets), "shouldn't remove any tweets"
+        tweets = fixed_tweets
+        print (len(tweets), " tweets to classify")
 
-    print ("Loading trained classifier... ")
-    model = joblib.load('final_model.pkl')
+        print ("Loading trained classifier... ")
+        model = joblib.load('final_model.pkl')
 
-    print ("Loading other information...")
-    tf_vectorizer = joblib.load('final_tfidf.pkl')
-    idf_vector = joblib.load('final_idf.pkl')
-    pos_vectorizer = joblib.load('final_pos.pkl')
-    #Load ngram dict
-    #Load pos dictionary
-    #Load function to transform data
+        print ("Loading other information...")
+        tf_vectorizer = joblib.load('final_tfidf.pkl')
+        idf_vector = joblib.load('final_idf.pkl')
+        pos_vectorizer = joblib.load('final_pos.pkl')
+        #Load ngram dict
+        #Load pos dictionary
+        #Load function to transform data
 
-    print ("Transforming inputs...")
-    X = transform_inputs(tweets, tf_vectorizer, idf_vector, pos_vectorizer)
+        print ("Transforming inputs...")
+        X = transform_inputs(tweets, tf_vectorizer, idf_vector, pos_vectorizer)
 
-    print ("Running classification model...")
-    predicted_class = predictions(X, model)
+        print ("Running classification model...")
+        predicted_class = predictions(X, model)
 
-    return predicted_class
+        return predicted_class
 
 
-if __name__ == '__main__':
-    print ("Loading data to classify...")
+    if __name__ == '__main__':
+        print ("Loading data to classify...")
 
-    #Tweets obtained here: https://github.com/sashaperigo/Trump-Tweets
+        #Tweets obtained here: https://github.com/sashaperigo/Trump-Tweets
 
-    df = pd.read_csv('trump_tweets.csv')
-    trump_tweets = df.Text
-    trump_tweets = [x for x in trump_tweets if type(x) == str]
-    trump_predictions = get_tweets_predictions(trump_tweets)
+        df = pd.read_csv('trump_tweets.csv')
+        trump_tweets = df.Text
+        trump_tweets = [x for x in trump_tweets if type(x) == str]
+        if False:
+            trump_predictions = get_tweets_predictions(trump_tweets)
 
-    print ("Printing predicted values: ")
-    for i,t in enumerate(trump_tweets):
-        print (t)
-        print (class_to_name(trump_predictions[i]))
+            print ("Printing predicted values: ")
+            for i,t in enumerate(trump_tweets):
+                print (t)
+                print (class_to_name(trump_predictions[i]))
 
-    print ("Calculate accuracy on labeled data")
-    df = pd.read_csv('../data/labeled_data.csv')
-    tweets = df['tweet'].values
-    tweets = [x for x in tweets if type(x) == str]
-    tweets_class = df['class'].values
-    predictions = get_tweets_predictions(tweets)
-    right_count = 0
-    for i,t in enumerate(tweets):
-        if tweets_class[i] == predictions[i]:
-            right_count += 1
+            print ("Calculate accuracy on labeled data")
+            df = pd.read_csv('../data/labeled_data.csv')
+            tweets = df['tweet'].values
+            tweets = [x for x in tweets if type(x) == str]
+            tweets_class = df['class'].values
+            predictions = get_tweets_predictions(tweets)
+            right_count = 0
+            for i,t in enumerate(tweets):
+                if tweets_class[i] == predictions[i]:
+                    right_count += 1
 
-    accuracy = right_count / float(len(df))
-    print ("accuracy", accuracy)
+            accuracy = right_count / float(len(df))
+            print ("accuracy", accuracy)

@@ -1,0 +1,125 @@
+
+================================================================================
+Priberam Subjectivity Lexicon for Portuguese, V1.0
+================================================================================
+
+- This package contains the Priberam Subjectivity Lexicon for Portuguese, a 
+  Portuguese version of the Subjectivity lexicon of [2], which we used in [1]. 
+
+- If you use this data in your research, please cite the paper:
+
+	[1] Mariana S. C. Almeida, Claudia Pinto, Helena Figueira, Pedro Mendes
+	    and André F. T. Martins. 2015. "Aligning Opinions: Cross-Lingual
+	    Opinion Mining with Dependencies", In Annual Meeting of the 
+      	    Association for Computational Linguistics (ACL).
+
+- License: Priberam Subjectivity Lexicon for Portuguese (c) by Priberam Informática, S.A.
+	   Priberam Subjectivity Lexicon for Portuguese is licensed under a 
+	   Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+  	   You should have received a copy of the license along with this work (file LICENSE). 
+	   If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/>. 
+
+- Released date: May 2015
+
+- Website: http://labs.priberam.com/Resources/Subjectivity-Lexicon-PT.aspx
+
+
+================================================================================
+Contents
+================================================================================
+
+1. Description
+
+2. Lexicon Data
+	2.1 Data Format
+	2.2 Example
+
+3. References
+
+4. Acknowledgements
+
+
+================================================================================
+1. Description
+================================================================================
+
+The lexicon (available at http://labs.priberam.com/Resources/Subjectivity-Lexicon-PT.aspx) 
+was build by translating the MPQA Subjectivity Lexicon [2] to Portuguese. The corpus 
+was used for the first time in [1] for the task of fine-grained opinion mining, where it 
+was used with a lemmatizer in order to annotate words with subjectivity information.
+
+This package contains five files:
+	README.txt  	--> This file
+	LICENSE.txt 	--> License file 
+	Priberam_Subjectivity_Lexicon_PT.txt  --> File with the Portuguese translation 
+						  of the Subjective lexicon of [3]
+
+You may also be interested the fine-rained opinion mining corpus for Portuguese 
+that we used in [1] and that includes subjectivity annotations: the Priberam 
+Fine-Grained Opinion Corpus, which is available at 
+http://labs.priberam.com/Resources/Fine-Grained-Opinion-Corpus.aspx.
+
+
+================================================================================
+2. Portuguese Subjectivity Lexicon
+================================================================================
+
+==== 2.1 Data Format ====
+
+The lexicon file (lexicon_pt.txt) is annotated in a CONLL format, each line providing 
+information elements about a word, separated by tabs (see some line examples ahead): 
+
+1st element - word form
+
+2nd element - simplified part-of-speech (POS) tag, which can be: "N" (noun), 
+	      "A" (adjective), "D" (adverb) , "V" (verb).
+
+3rd element - intensity of subjectivity, which can be: "weaksubj" or "negative"
+
+4th element - polarity of subjectivity, which can be: "negative", "positive", 
+	      "neutral" or "both".
+
+
+Since the lexicon was obtained by translating an English lexicon, different English words
+(with different lexicon annotations) can map to the same Portuguese word. For this reason, 
+the lexicon may have more than one possible subjectivity tag for the same pair word+POS.
+This is the case of the word "abalar" in the examples ahead.
+
+==== 2.2 Examples ====
+
+à deriva	D	weaksubj	negative
+à farta		D	strongsubj	positive
+à vontade	A	weaksubj	positive
+à vontade	D	weaksubj	positive
+abalado		A	weaksubj	negative
+abalar		V	strongsubj	negative
+abalar		V	weaksubj	negative
+
+
+================================================================================
+3. References
+================================================================================
+
+If you use this corpus, please cite:
+
+[1] Mariana S. C. Almeida, Claudia Pinto, Helena Figueira, Pedro Mendes
+    and André F. T. Martins. 2015. "Aligning Opinions: Cross-Lingual
+    Opinion Mining with Dependencies", In Annual Meeting of the 
+    Association for Computational Linguistics (ACL).
+
+Related references:
+
+[2] Theresa Wilson, Janyce Wiebe, and Paul Hoffmann (2005). Recognizing Contextual 
+    Polarity in Phrase-Level Sentiment Analysis. Proc. of HLT-EMNLP-2005.
+
+
+================================================================================
+4. Acknowledgements
+================================================================================
+
+This work was partially supported by the EU/FEDER programme, QREN/POR Lisboa 
+(Portugal), under the Intelligo project (contract 2012/24803) and by a FCT grants 
+UID/EEA/50008/2013 and PTDC/EEISII/2312/2012.
+
+
+

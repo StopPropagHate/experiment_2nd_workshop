@@ -10,33 +10,59 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="classifier.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="458">
+              <caret line="212" column="25" lean-forward="true" selection-start-line="212" selection-start-column="25" selection-end-line="212" selection-end-column="25" />
               <folding>
-                <element signature="e#261#274#0" expanded="true" />
+                <element signature="e#572#583#0" expanded="true" />
                 <element signature="e#934#1656#0" />
                 <element signature="e#1683#1996#0" />
                 <element signature="e#2029#2173#0" />
-                <element signature="e#2205#2596#0" />
+                <element signature="e#2363#2818#0" />
+                <element signature="e#2347#2574#0" />
                 <element signature="e#2639#3569#0" />
                 <element signature="e#3603#4943#0" />
-                <element signature="e#5274#6275#0" />
-                <element signature="e#6308#6498#0" />
-                <element signature="e#6536#6839#0" />
-                <element signature="e#6902#8013#0" />
-                <element signature="e#8063#8994#0" />
+                <element signature="e#4979#5195#0" />
+                <element signature="e#5274#6280#0" />
+                <element signature="e#6313#6503#0" />
+                <element signature="e#6907#8028#0" />
+                <element signature="e#8062#8993#0" />
+                <element signature="e#8463#9224#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pt_env.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pt_env.yml">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="sentimento.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sentimento.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#432#949#0" />
+                <element signature="e#1016#1332#0" />
+                <element signature="e#1013#1102#0" />
+                <element signature="e#167#331#0" />
+                <element signature="e#1709#2144#0" />
+                <element signature="e#1455#1641#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubjectivityClues.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/PycharmProjects/ze_thesis/SubjectivityClues.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -48,9 +74,15 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>1</find>
+    </findStrings>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/sentimento.py" />
         <option value="$PROJECT_DIR$/classifier.py" />
       </list>
     </option>
@@ -65,7 +97,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="1432" />
     <option name="y" value="-8" />
     <option name="width" value="1456" />
     <option name="height" value="876" />
@@ -91,6 +123,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/classifier.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -112,6 +145,69 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Python.run">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="pt_approach" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python">
+      <module name="pt_approach" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Ze\Anaconda3\envs\pt_approach\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="senti test" type="PythonConfigurationType" factoryName="Python">
+      <module name="pt_approach" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Ze\Anaconda3\envs\pt_approach\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sentimento.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.senti test" />
+      <item itemvalue="Python.run" />
+    </list>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -126,30 +222,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="1432" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="SciView" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="right" x="0" y="0" width="314" height="676" id="Documentation" order="0" side_tool="true" visible="true" weight="0.27430555" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3298292" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3219448" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,27 +255,86 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pt_env.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/classifier.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
           <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
           <folding>
-            <element signature="e#261#274#0" expanded="true" />
+            <element signature="e#572#583#0" expanded="true" />
             <element signature="e#934#1656#0" />
             <element signature="e#1683#1996#0" />
             <element signature="e#2029#2173#0" />
-            <element signature="e#2205#2596#0" />
+            <element signature="e#2363#2818#0" />
+            <element signature="e#2347#2574#0" />
             <element signature="e#2639#3569#0" />
             <element signature="e#3603#4943#0" />
-            <element signature="e#5274#6275#0" />
-            <element signature="e#6308#6498#0" />
-            <element signature="e#6536#6839#0" />
-            <element signature="e#6902#8013#0" />
-            <element signature="e#8063#8994#0" />
+            <element signature="e#4979#5195#0" />
+            <element signature="e#5274#6280#0" />
+            <element signature="e#6313#6503#0" />
+            <element signature="e#6907#8028#0" />
+            <element signature="e#8062#8993#0" />
+            <element signature="e#8463#9224#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PycharmProjects/ze_thesis/SubjectivityClues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydev_run_in_console.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sentimento.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#432#949#0" />
+            <element signature="e#1016#1332#0" />
+            <element signature="e#1013#1102#0" />
+            <element signature="e#167#331#0" />
+            <element signature="e#1709#2144#0" />
+            <element signature="e#1455#1641#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="212" column="25" lean-forward="true" selection-start-line="212" selection-start-column="25" selection-end-line="212" selection-end-column="25" />
+          <folding>
+            <element signature="e#572#583#0" expanded="true" />
+            <element signature="e#934#1656#0" />
+            <element signature="e#1683#1996#0" />
+            <element signature="e#2029#2173#0" />
+            <element signature="e#2363#2818#0" />
+            <element signature="e#2347#2574#0" />
+            <element signature="e#2639#3569#0" />
+            <element signature="e#3603#4943#0" />
+            <element signature="e#4979#5195#0" />
+            <element signature="e#5274#6280#0" />
+            <element signature="e#6313#6503#0" />
+            <element signature="e#6907#8028#0" />
+            <element signature="e#8062#8993#0" />
+            <element signature="e#8463#9224#0" />
           </folding>
         </state>
       </provider>
