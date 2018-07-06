@@ -15,7 +15,7 @@ class SentiLex:
         if (os.path.exists(lem_path)):
             with open(lem_path, 'r') as lem:
                 lines = lem.readlines()
-                print('num lines:', len(lines))
+                print('SentiLex num lines:', len(lines))
                 for line in lines:
                     res = re.findall(SentiLex.lem_capture_pattern, line)
                     res = res.pop()
@@ -25,7 +25,6 @@ class SentiLex:
                     polAvg = sum(pols) / float(len(pols))
                     self.lemas[ res[0] ] = polAvg
 
-
     def get_sentiment_tweet(self,tokens):
         sentiment_scores = []
         for token in tokens:
@@ -33,19 +32,16 @@ class SentiLex:
             if val != None:
                 sentiment_scores.append(val)
         if sentiment_scores != []:
-            Avg = sum(sentiment_scores) / float(len(sentiment_scores))
+            avg = sum(sentiment_scores) / float(len(sentiment_scores))
         else:
-            return None
-
-
+            avg=0
+        return avg
 
     def get_sentiment_lema(self,lema):
         try:
             return self.lemas[lema]
         except KeyError:
             return None
-
-
     def get_lexicon_path(self,name):
         if (name == 'SentiLex-lem'):
             return self.data_path + '/SentiLex-lem-PT02.txt'
@@ -53,7 +49,8 @@ class SentiLex:
             return self.data_path + '/SentiLex-flex-PT02.txt'
 
 
-if False:
+test = False
+if test:
     s = SentiLex()
     print(s.lemas)
 
