@@ -15,15 +15,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="classifier.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="classifier.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1904">
-              <caret line="276" column="15" selection-start-line="276" selection-start-column="15" selection-end-line="276" selection-end-column="15" />
+            <state relative-caret-position="157">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#1160#1807#0" />
                 <element signature="e#1842#2633#0" />
+                <element signature="e#2947#3245#0" />
                 <element signature="e#2655#2681#0" />
                 <element signature="e#2708#3021#0" />
                 <element signature="e#3054#3198#0" />
@@ -32,7 +33,6 @@
                 <element signature="e#3980#4255#0" />
                 <element signature="e#4298#5228#0" />
                 <element signature="e#5262#6599#0" />
-                <element signature="e#9040#10554#0" />
               </folding>
             </state>
           </provider>
@@ -49,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="example.ipynb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="example.ipynb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
@@ -95,9 +95,9 @@
         <option value="$PROJECT_DIR$/pt/classifier.py" />
         <option value="$PROJECT_DIR$/Pre.py" />
         <option value="$PROJECT_DIR$/preprocessing.py" />
-        <option value="$PROJECT_DIR$/classifier.py" />
         <option value="$PROJECT_DIR$/pt/example.ipynb" />
         <option value="$PROJECT_DIR$/example.ipynb" />
+        <option value="$PROJECT_DIR$/classifier.py" />
       </list>
     </option>
   </component>
@@ -294,13 +294,13 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.63055557" weight="0.49014455" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5784722" visible="true" weight="0.45992115" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5784722" visible="true" weight="0.3981603" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11111111" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49930555" weight="0.3298292" />
-      <window_info active="true" anchor="right" x="2564" y="87" width="304" height="497" id="SciView" order="3" visible="true" weight="0.21111111" />
+      <window_info anchor="right" x="2564" y="87" width="304" height="497" id="SciView" order="3" visible="true" weight="0.21111111" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.23653089" />
@@ -365,6 +365,7 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#1160#1807#0" />
             <element signature="e#1842#2633#0" />
+            <element signature="e#2947#3245#0" />
             <element signature="e#2655#2681#0" />
             <element signature="e#2708#3021#0" />
             <element signature="e#3054#3198#0" />
@@ -373,7 +374,6 @@
             <element signature="e#3980#4255#0" />
             <element signature="e#4298#5228#0" />
             <element signature="e#5262#6599#0" />
-            <element signature="e#9040#10554#0" />
           </folding>
         </state>
       </provider>
@@ -453,6 +453,7 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#1160#1807#0" />
             <element signature="e#1842#2633#0" />
+            <element signature="e#2947#3245#0" />
             <element signature="e#2655#2681#0" />
             <element signature="e#2708#3021#0" />
             <element signature="e#3054#3198#0" />
@@ -461,7 +462,6 @@
             <element signature="e#3980#4255#0" />
             <element signature="e#4298#5228#0" />
             <element signature="e#5262#6599#0" />
-            <element signature="e#9040#10554#0" />
           </folding>
         </state>
       </provider>
@@ -541,6 +541,7 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#1160#1807#0" />
             <element signature="e#1842#2633#0" />
+            <element signature="e#2947#3245#0" />
             <element signature="e#2655#2681#0" />
             <element signature="e#2708#3021#0" />
             <element signature="e#3054#3198#0" />
@@ -549,7 +550,6 @@
             <element signature="e#3980#4255#0" />
             <element signature="e#4298#5228#0" />
             <element signature="e#5262#6599#0" />
-            <element signature="e#9040#10554#0" />
           </folding>
         </state>
       </provider>
@@ -572,6 +572,7 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#1160#1807#0" />
             <element signature="e#1842#2633#0" />
+            <element signature="e#2947#3245#0" />
             <element signature="e#2655#2681#0" />
             <element signature="e#2708#3021#0" />
             <element signature="e#3054#3198#0" />
@@ -580,7 +581,6 @@
             <element signature="e#3980#4255#0" />
             <element signature="e#4298#5228#0" />
             <element signature="e#5262#6599#0" />
-            <element signature="e#9040#10554#0" />
           </folding>
         </state>
       </provider>
@@ -708,27 +708,6 @@
     <entry file="file://$PROJECT_DIR$/pt/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/classifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="276" column="15" selection-start-line="276" selection-start-column="15" selection-end-line="276" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#1160#1807#0" />
-            <element signature="e#1842#2633#0" />
-            <element signature="e#2655#2681#0" />
-            <element signature="e#2708#3021#0" />
-            <element signature="e#3054#3198#0" />
-            <element signature="e#3229#3591#0" />
-            <element signature="e#3617#3953#0" />
-            <element signature="e#3980#4255#0" />
-            <element signature="e#4298#5228#0" />
-            <element signature="e#5262#6599#0" />
-            <element signature="e#9040#10554#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pt/example.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -749,6 +728,27 @@
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#1160#1807#0" />
+            <element signature="e#1842#2633#0" />
+            <element signature="e#2947#3245#0" />
+            <element signature="e#2655#2681#0" />
+            <element signature="e#2708#3021#0" />
+            <element signature="e#3054#3198#0" />
+            <element signature="e#3229#3591#0" />
+            <element signature="e#3617#3953#0" />
+            <element signature="e#3980#4255#0" />
+            <element signature="e#4298#5228#0" />
+            <element signature="e#5262#6599#0" />
+          </folding>
         </state>
       </provider>
     </entry>
