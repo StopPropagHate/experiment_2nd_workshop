@@ -1,6 +1,10 @@
 import sys
 import numpy as np
 import pandas as pd
+
+import spacy
+import pt_core_news_sm
+
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import nltk
@@ -25,6 +29,10 @@ stopwords.extend(other_exclusions)
 
 sentiment_analyzer = SentiLex()
 stemmer = RSLPStemmer()
+
+nlp = pt_core_news_sm.load()
+
+
 
 class OtherTransformer(TransformerMixin, BaseEstimator):
 
@@ -75,6 +83,7 @@ def preprocess(text_string):
     parsed_text = re.sub(giant_url_regex, 'URLHERE', parsed_text)
     parsed_text = re.sub(mention_regex, 'MENTIONHERE', parsed_text)
     #parsed_text = parsed_text.code("utf-8", errors='ignore')
+    #print('preprocess:', parsed_text)
     return parsed_text
 
 def create_split(X,y):
@@ -94,23 +103,25 @@ def tokenize(tweet):
     tweet = " ".join(re.split("[^a-zA-Z]*", tweet.lower())).strip()
     #tokens = re.split("[^a-zA-Z]*", tweet.lower())
     tokens = [stemmer.stem(t) for t in tweet.split()]
+    #print('tokenize: ', tokens)
     return tokens
 
 def basic_tokenize(tweet):
+
+    print('(basic_tokenize ) tweet ', tweet)
     """Same as tokenize but without the stemming"""
     tweet = " ".join(re.split("[^a-zA-Z.,!?]*", tweet.lower())).strip()
-    return tweet.split()
+    tokens = [t for t in tweet.split()]
+    print('basic_tokenize: ', tokens)
+    return tokens
 
 def get_pos_tags(tweet):
     """Takes a list of strings (tweets) and
     returns a list of strings of (POS tags).
     """
     tweet_tags = []
-    tokens = basic_tokenize(preprocess(tweet))
-    # this
-    tags = nltk.pos_tag(tokens)
-
-    tag_list = [x[1] for x in tags]
+    doc = nlp(tweet)
+    tag_list = [w.pos_ for w in doc]
     #for i in range(0, len(tokens)):
     tag_str = " ".join(tag_list)
     tweet_tags.append(tag_str)
@@ -238,26 +249,26 @@ if __name__ == '__main__':
         datasetAccuracy = np.mean(train_predictions == y_train)
         print("Train Accuracy= " + str(datasetAccuracy))
         print('Train classification report..')
-        print(classification_report(y_train, train_predictions, target_names=['Hate','No hate']))
+        print(classification_report(y_train, train_predictions, target_names=['No hate','Hate']))
         # Confusion Matrix table
         print("\nTrain Confusion Matrix:")
         cm_train = metrics.confusion_matrix(y_train, train_predictions)
         print(cm_train)
-        df_cm = pd.DataFrame(cm_train, index=['real Hate','real No'],columns=['predicted Hate','predicted No'])
+        df_cm = pd.DataFrame(cm_train, index=['real No','real Hate'],columns=['predicted No','predicted Hate'])
         plt.figure(figsize=(10, 7))
         sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g')
         plt.show()
         # test predictions
         test_predictions = pipeline.predict(X_test)
         print('Test classification report..')
-        print(classification_report(y_test, test_predictions, target_names=['Hate','No hate']))
+        print(classification_report(y_test, test_predictions, target_names=['No hate','Hate']))
         datasetAccuracy = np.mean(test_predictions == y_test)
         print("Test Accuracy= " + str(datasetAccuracy))
         # Confusion Matrix table
         print("\nTest Confusion Matrix:")
         cm_test = metrics.confusion_matrix(y_test, test_predictions)
         print(cm_test)
-        df_cm = pd.DataFrame(cm_test, index=['real Hate','real No'],columns=['predicted Hate','predicted No'])
+        df_cm = pd.DataFrame(cm_test, index=['real No','real Hate'],columns=['predicted No','predicted Hate'])
         plt.figure(figsize=(10, 7))
         sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g')
         plt.show()
