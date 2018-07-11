@@ -11,35 +11,23 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/pt_approach$run.coverage" NAME="run Coverage Results" MODIFIED="1530293179699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pt_approach$pt_approach.coverage" NAME="pt_approach Coverage Results" MODIFIED="1530889615380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/pt_approach$pt_approach.coverage" NAME="pt_approach Coverage Results" MODIFIED="1531317425714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="classifier.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="241" column="60" selection-start-line="241" selection-start-column="48" selection-end-line="241" selection-end-column="60" />
+            <state relative-caret-position="134">
+              <caret line="191" column="13" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="13" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#1160#1807#0" />
-                <element signature="e#2947#3245#0" />
-                <element signature="e#2708#3021#0" />
-                <element signature="e#3510#3725#0" />
-                <element signature="e#3617#3953#0" />
-                <element signature="e#3980#4255#0" />
-                <element signature="e#4298#5228#0" />
-                <element signature="e#5262#6599#0" />
+                <element signature="e#2001#2831#0" />
+                <element signature="e#3233#3579#0" />
+                <element signature="e#3613#3873#0" />
+                <element signature="e#3904#4197#0" />
+                <element signature="e#4240#5170#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/spacy/lang/pt/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="28" column="14" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -48,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/example.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
-              <selected id="0" />
+              <selected id="1" />
             </state>
           </provider>
         </entry>
@@ -77,7 +65,11 @@
       <find>class_weight</find>
       <find>print</find>
       <find>y_te</find>
+      <find>p</find>
       <find>build_pipeline</find>
+      <find>fuf</find>
+      <find>gay</find>
+      <find>pos</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -91,8 +83,8 @@
         <option value="$PROJECT_DIR$/Pre.py" />
         <option value="$PROJECT_DIR$/pt/example.ipynb" />
         <option value="$PROJECT_DIR$/preprocessing.py" />
-        <option value="$PROJECT_DIR$/example.ipynb" />
         <option value="$PROJECT_DIR$/classifier.py" />
+        <option value="$PROJECT_DIR$/example.ipynb" />
       </list>
     </option>
   </component>
@@ -106,7 +98,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1432" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1456" />
     <option name="height" value="876" />
@@ -172,7 +164,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run">
+  <component name="RunManager" selected="Python.run ">
     <configuration name="pt_approach" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="pt_approach" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -209,7 +201,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="run" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="run " type="PythonConfigurationType" factoryName="Python">
       <module name="pt_approach" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -223,7 +215,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
-      <option name="PARAMETERS" value="evaluation none" />
+      <option name="PARAMETERS" value="evaluation create_model" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -270,7 +262,7 @@
       <item itemvalue="Jupyter Notebook.pt_approach" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.senti test" />
-      <item itemvalue="Python.run" />
+      <item itemvalue="Python.run " />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -287,23 +279,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1432" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.42152777" side_tool="true" weight="0.35479632" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5784722" visible="true" weight="0.42049935" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.63055557" weight="0.49014455" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5784722" visible="true" weight="0.49671486" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3298292" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14583333" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49930555" weight="0.3298292" />
-      <window_info anchor="right" x="2564" y="87" width="304" height="497" id="SciView" order="3" visible="true" weight="0.21111111" />
+      <window_info active="true" anchor="right" x="2564" y="87" width="304" height="497" id="SciView" order="3" visible="true" weight="0.21111111" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.23653089" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -311,30 +302,31 @@
       <window_info anchor="right" x="0" y="0" width="314" height="676" id="Documentation" order="5" side_tool="true" weight="0.21458334" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49930555" weight="0.3298292" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7861111" visible="true" weight="0.5795007" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.63055557" weight="0.49014455" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49930555" weight="0.3298292" />
       <window_info anchor="right" x="0" y="0" width="314" height="676" id="Documentation" order="5" side_tool="true" visible="true" weight="0.21458334" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.21388888" side_tool="true" visible="true" weight="0.5795007" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.63055557" weight="0.49014455" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,18 +351,44 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/classifier.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4046">
+          <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#2001#2831#0" />
+            <element signature="e#3233#3579#0" />
+            <element signature="e#3613#3873#0" />
+            <element signature="e#3904#4197#0" />
+            <element signature="e#4240#5170#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/sklearn/feature_selection/from_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="125" column="43" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#1160#1807#0" />
-            <element signature="e#2947#3245#0" />
-            <element signature="e#2708#3021#0" />
-            <element signature="e#3510#3725#0" />
-            <element signature="e#3617#3953#0" />
-            <element signature="e#3980#4255#0" />
-            <element signature="e#4298#5228#0" />
-            <element signature="e#5262#6599#0" />
+            <element signature="e#2001#2831#0" />
+            <element signature="e#3233#3579#0" />
+            <element signature="e#3613#3873#0" />
+            <element signature="e#3904#4197#0" />
+            <element signature="e#4240#5170#0" />
           </folding>
         </state>
       </provider>
@@ -406,23 +424,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pt/example.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py" />
+    <entry file="file://$PROJECT_DIR$/pt/example.ipynb" />
     <entry file="file://$PROJECT_DIR$/pt_env.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -448,14 +451,11 @@
           <caret line="184" column="102" selection-start-line="184" selection-start-column="102" selection-end-line="184" selection-end-column="102" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#1160#1807#0" />
-            <element signature="e#2947#3245#0" />
-            <element signature="e#2708#3021#0" />
-            <element signature="e#3510#3725#0" />
-            <element signature="e#3617#3953#0" />
-            <element signature="e#3980#4255#0" />
-            <element signature="e#4298#5228#0" />
-            <element signature="e#5262#6599#0" />
+            <element signature="e#2001#2831#0" />
+            <element signature="e#3233#3579#0" />
+            <element signature="e#3613#3873#0" />
+            <element signature="e#3904#4197#0" />
+            <element signature="e#4240#5170#0" />
           </folding>
         </state>
       </provider>
@@ -491,16 +491,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/pt_env.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -520,27 +511,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pt/example.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pt/example.ipynb" />
     <entry file="file://$PROJECT_DIR$/classifier.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3468">
           <caret line="212" column="25" lean-forward="true" selection-start-line="212" selection-start-column="25" selection-end-line="212" selection-end-column="25" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#1160#1807#0" />
-            <element signature="e#2947#3245#0" />
-            <element signature="e#2708#3021#0" />
-            <element signature="e#3510#3725#0" />
-            <element signature="e#3617#3953#0" />
-            <element signature="e#3980#4255#0" />
-            <element signature="e#4298#5228#0" />
-            <element signature="e#5262#6599#0" />
+            <element signature="e#2001#2831#0" />
+            <element signature="e#3233#3579#0" />
+            <element signature="e#3613#3873#0" />
+            <element signature="e#3904#4197#0" />
+            <element signature="e#4240#5170#0" />
           </folding>
         </state>
       </provider>
@@ -561,14 +543,11 @@
           <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#1160#1807#0" />
-            <element signature="e#2947#3245#0" />
-            <element signature="e#2708#3021#0" />
-            <element signature="e#3510#3725#0" />
-            <element signature="e#3617#3953#0" />
-            <element signature="e#3980#4255#0" />
-            <element signature="e#4298#5228#0" />
-            <element signature="e#5262#6599#0" />
+            <element signature="e#2001#2831#0" />
+            <element signature="e#3233#3579#0" />
+            <element signature="e#3613#3873#0" />
+            <element signature="e#3904#4197#0" />
+            <element signature="e#4240#5170#0" />
           </folding>
         </state>
       </provider>
@@ -638,13 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/sklearn/svm/classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7990">
-          <caret line="479" column="16" selection-start-line="479" selection-start-column="4" selection-end-line="479" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/sklearn/pipeline.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10880">
@@ -659,23 +631,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notebook01.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/notebook01.ipynb" />
+    <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/sklearn/metrics/classification.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -686,39 +643,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pt/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pt/example.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#18#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/spacy/lang/pt/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="14" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pt/example.ipynb" />
+    <entry file="file://$PROJECT_DIR$/preprocessing.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/spacy/util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1498">
@@ -733,27 +659,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/numpy/lib/index_tricks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="512" column="8" selection-start-line="512" selection-start-column="8" selection-end-line="512" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/sklearn/svm/classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2929">
+          <caret line="170" column="23" selection-start-line="170" selection-start-column="23" selection-end-line="170" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/spacy/lang/pt/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/feature weights" />
+    <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/sklearn/feature_selection/from_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="125" column="43" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/feature_weights.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2834">
+          <caret line="381" column="39" selection-start-line="381" selection-start-column="39" selection-end-line="381" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/envs/pt_approach/Lib/site-packages/sklearn/feature_extraction/text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="1287" column="8" selection-start-line="1287" selection-start-column="8" selection-end-line="1287" selection-end-column="8" />
+        <state relative-caret-position="356">
+          <caret line="771" column="56" selection-start-line="771" selection-start-column="50" selection-end-line="771" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="241" column="60" selection-start-line="241" selection-start-column="48" selection-end-line="241" selection-end-column="60" />
+        <state relative-caret-position="134">
+          <caret line="191" column="13" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="13" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#1160#1807#0" />
-            <element signature="e#2947#3245#0" />
-            <element signature="e#2708#3021#0" />
-            <element signature="e#3510#3725#0" />
-            <element signature="e#3617#3953#0" />
-            <element signature="e#3980#4255#0" />
-            <element signature="e#4298#5228#0" />
-            <element signature="e#5262#6599#0" />
+            <element signature="e#2001#2831#0" />
+            <element signature="e#3233#3579#0" />
+            <element signature="e#3613#3873#0" />
+            <element signature="e#3904#4197#0" />
+            <element signature="e#4240#5170#0" />
           </folding>
         </state>
       </provider>

@@ -4,7 +4,6 @@ import pandas as pd
 
 import spacy
 import pt_core_news_sm
-
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import nltk
@@ -15,6 +14,8 @@ import seaborn as sn
 import pickle
 from sklearn import metrics
 from sklearn.base import TransformerMixin, BaseEstimator
+from sklearn.feature_selection import SelectFromModel
+
 from sklearn.pipeline import Pipeline
 from sklearn.externals import joblib
 from sklearn.svm import LinearSVC
@@ -22,6 +23,7 @@ from sklearn.metrics import classification_report
 from sklearn.pipeline import FeatureUnion
 import warnings
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 
 stopwords = nltk.corpus.stopwords.words("portuguese")
 other_exclusions = ["#ff", "ff", "rt"]
@@ -29,10 +31,8 @@ stopwords.extend(other_exclusions)
 
 sentiment_analyzer = SentiLex()
 stemmer = RSLPStemmer()
-
+from sklearn import preprocessing
 nlp = pt_core_news_sm.load()
-
-
 
 class OtherTransformer(TransformerMixin, BaseEstimator):
 
@@ -44,7 +44,8 @@ class OtherTransformer(TransformerMixin, BaseEstimator):
         for document in X:
             features = other_features_(document[1])
             temp.append(features)
-        features = np.array(temp)
+
+        features = preprocessing.MinMaxScaler().fit_transform(np.array(temp))
         return features
 
     def fit(self, X, y=None, **fit_params):
@@ -127,23 +128,6 @@ def get_pos_tags(tweet):
     tweet_tags.append(tag_str)
     return tweet_tags
 
-def get_tf(tweets):
-    vectorizer = TfidfVectorizer(analyzer='word', use_idf=False, encoding='utf-8',lowercase=True, stop_words=stopwords)
-
-    X = vectorizer.transform(tweets)
-    print('get_tf...')
-    pickle.dump(vectorizer, open("final_tf.pkl", "wb"))
-    with open('vectorizer.pk', 'wb') as fin:
-        pickle.dump(vectorizer, fin)
-    return vectorizer
-
-def get_idf(tweets):
-    vectorizer = TfidfVectorizer(analyzer='word', use_idf=True, encoding='utf-8',lowercase=True, stop_words=stopwords)
-    pickle.dump(vectorizer, open("final_idf.pkl", "wb"))
-    with open('vectorizer.pk', 'wb') as fin:
-        pickle.dump(vectorizer, fin)
-    return vectorizer
-
 def count_twitter_objs(text_string):
     """
     Accepts a text string and replaces:
@@ -202,17 +186,20 @@ def build_pipeline(X,y,mode='load_from_file'):
 
     if mode== 'create_model':
         print('creating model on: ', filename)
+        #max_df=0.85,
         #create transformers
-        vectorizer = TfidfVectorizer(min_df=1,tokenizer=tokenize,preprocessor=preprocess,ngram_range=(1, 3))
+        vectorizer = TfidfVectorizer(analyzer='word',min_df=2 ,tokenizer=tokenize,preprocessor=preprocess,ngram_range=(1, 3),lowercase=True, stop_words=stopwords)
         other = OtherTransformer()
-        pos_tagger = TfidfVectorizer(min_df=1,tokenizer=tag,preprocessor=preprocess)
+        pos_tagger = CountVectorizer(min_df=2,tokenizer=tag,preprocessor=preprocess,ngram_range=(1, 3))
         #create classifier
         svc = LinearSVC(random_state=0, class_weight ='balanced')
+        selection =  SelectFromModel(LinearSVC(penalty="l1", dual=False), threshold=0.30)
         #create pipeline
-        pipeline = Pipeline([ ("features", FeatureUnion([('vectorizer', vectorizer),('pos',pos_tagger),('other',other)])), ('svc', svc)])
+        pipeline = Pipeline([ ("features", FeatureUnion([('vectorizer', vectorizer),('pos',pos_tagger),('other',other)])),('feature_selection',selection),('svc', svc)])
         #fit
         print('fitting..')
         pipeline.fit(X,y)
+
         #save model
         with open(filename,'wb+') as fo:
             print('dumping model at :',filename)
@@ -227,6 +214,7 @@ def build_pipeline(X,y,mode='load_from_file'):
 
 if __name__ == '__main__':
     warnings.filterwarnings("ignore")
+
     print('Number of arguments:', len(sys.argv), 'arguments.')
     print('Argument List:', str(sys.argv))
     df = load_dataset()
@@ -234,12 +222,15 @@ if __name__ == '__main__':
     y = df['Hate.speech'].to_frame()
     class_counts = pd.value_counts(y.values.flatten())
     class_counts.plot.bar(x='class values', y='ammount')
-    plt.show()
+    #plt.show()
     print('num instances: ', len(X),'---',len(y))
     print('creating train test split...')
+
     (X_train, y_train, X_test, y_test)= create_split(X,y)
     print('Build pipeline..')
-    pipeline = build_pipeline(X_train, y_train,'create_model')
+    #load_from_file
+    #create_model
+    pipeline = build_pipeline(X_train, y_train,sys.argv[2])
 
     if sys.argv[1] == 'evaluation':
         print('starting evaluation..')
@@ -272,5 +263,29 @@ if __name__ == '__main__':
         plt.figure(figsize=(10, 7))
         sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g')
         plt.show()
+
+    print('printing model weights..')
+    df = pd.DataFrame(columns=['feature_index', 'feature_name','feature_weight'])
+    coefs = pipeline.named_steps['svc'].coef_
+    names = pipeline.named_steps['features'].get_feature_names()
+    #old 105328 # new 705
+    print('features created: ', len(names))
+    print('features used: ',len(coefs[0]))
+    for c in np.ndenumerate(coefs):
+        feature_id = c[0][1]
+        feature_weight = c[1]
+        df = df.set_value(feature_id, 'feature_index',feature_id)
+        df = df.set_value(feature_id, 'feature_weight', feature_weight)
+        for featureName in np.ndenumerate(names):
+            name_id = featureName[0][0]
+            if (name_id == feature_id):
+                feature_name = featureName[1]
+                df.set_value(feature_id, 'feature_name', feature_name)
+                break
+
+    df = df.sort_values( by=['feature_weight'])
+    df.to_csv('feature_weights.csv', sep='\t', encoding='utf-8')
+
+
 
     print('The End')
