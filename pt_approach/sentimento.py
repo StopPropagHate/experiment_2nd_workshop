@@ -1,6 +1,8 @@
 import re
 import os
+import warnings
 
+warnings.filterwarnings("ignore")
 
 class SentiLex:
 
@@ -15,15 +17,16 @@ class SentiLex:
         if (os.path.exists(lem_path)):
             with open(lem_path, 'r') as lem:
                 lines = lem.readlines()
-                print('SentiLex num lines:', len(lines))
                 for line in lines:
+
                     res = re.findall(SentiLex.lem_capture_pattern, line)
-                    res = res.pop()
-                    tags = res[2].split(';')
-                    tags.pop(0)
-                    pols = [int(pol.split('=')[1]) for pol in tags]
-                    polAvg = sum(pols) / float(len(pols))
-                    self.lemas[ res[0] ] = polAvg
+                    if res != []:
+                        res = res.pop()
+                        tags = res[2].split(';')
+                        tags.pop(0)
+                        pols = [int(pol.split('=')[1]) for pol in tags]
+                        polAvg = sum(pols) / float(len(pols))
+                        self.lemas[ res[0] ] = polAvg
 
     def get_sentiment_tweet(self,tokens):
         sentiment_scores = []

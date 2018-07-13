@@ -15,6 +15,8 @@ import pickle
 from sklearn import metrics
 from sklearn.base import TransformerMixin, BaseEstimator
 from sklearn.feature_selection import SelectFromModel
+from sklearn.model_selection import cross_val_predict
+from sklearn.utils.extmath import density
 
 from sklearn.pipeline import Pipeline
 from sklearn.externals import joblib
@@ -24,6 +26,8 @@ from sklearn.pipeline import FeatureUnion
 import warnings
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
+
+
 
 stopwords = nltk.corpus.stopwords.words("portuguese")
 other_exclusions = ["#ff", "ff", "rt"]
@@ -96,7 +100,8 @@ def create_split(X,y):
     return (X_train, y_train, X_test, y_test)
 
 def tag(tweet):
-    return get_pos_tags(tweet)
+    res = get_pos_tags(tweet)
+    return res
 
 def tokenize(tweet):
     """Removes punctuation & excess whitespace, sets to lowercase,
@@ -120,13 +125,9 @@ def get_pos_tags(tweet):
     """Takes a list of strings (tweets) and
     returns a list of strings of (POS tags).
     """
-    tweet_tags = []
     doc = nlp(tweet)
     tag_list = [w.pos_ for w in doc]
-    #for i in range(0, len(tokens)):
-    tag_str = " ".join(tag_list)
-    tweet_tags.append(tag_str)
-    return tweet_tags
+    return tag_list
 
 def count_twitter_objs(text_string):
     """
@@ -179,76 +180,78 @@ def other_features_(tweet):
     #features = pandas.DataFrame(features)
     return features
 
-def build_pipeline(X,y,mode='load_from_file'):
+def build_pipeline(X,y,mode='load_from_file',selection_mode= 'none',):
 
     filename = 'pt_classifier_joblib.pkl'
-    print('len X', len(X))
+
 
     if mode== 'create_model':
-        print('creating model on: ', filename)
-        #max_df=0.85,
         #create transformers
-        vectorizer = TfidfVectorizer(analyzer='word',min_df=2 ,tokenizer=tokenize,preprocessor=preprocess,ngram_range=(1, 3),lowercase=True, stop_words=stopwords)
+        vectorizer = TfidfVectorizer(analyzer='word', tokenizer=tokenize,preprocessor=preprocess,ngram_range=(1, 3),lowercase=True, max_features=30000, stop_words=stopwords)
         other = OtherTransformer()
-        pos_tagger = CountVectorizer(min_df=2,tokenizer=tag,preprocessor=preprocess,ngram_range=(1, 3))
+        pos_tagger = CountVectorizer(tokenizer=tag,preprocessor=preprocess,ngram_range=(1, 3),max_features=30000)
         #create classifier
-        svc = LinearSVC(random_state=0, class_weight ='balanced')
-        selection =  SelectFromModel(LinearSVC(penalty="l1", dual=False), threshold=0.30)
-        #create pipeline
-        pipeline = Pipeline([ ("features", FeatureUnion([('vectorizer', vectorizer),('pos',pos_tagger),('other',other)])),('feature_selection',selection),('svc', svc)])
+        svc = LinearSVC(random_state=1, class_weight ='balanced')
+        if selection_mode != 'none':
+            selection = SelectFromModel(LinearSVC(penalty=selection_mode, dual=False))
+            pipeline = Pipeline(
+                [("features", FeatureUnion([('vectorizer', vectorizer), ('pos', pos_tagger), ('other', other)])),
+                 ('selection', selection), ('svc', svc)])
+        else:
+            pipeline = Pipeline([("features", FeatureUnion([('vectorizer', vectorizer), ('pos', pos_tagger), ('other', other)])),('svc', svc)])
+
+
         #fit
         print('fitting..')
         pipeline.fit(X,y)
-
         #save model
         with open(filename,'wb+') as fo:
-            print('dumping model at :',filename)
             joblib.dump(pipeline,fo)
     elif mode == 'load_from_file':
-        print('loading model from: ',filename)
         with open(filename, 'rb') as fi:
             pipeline = joblib.load(fi)
-
     return pipeline
-
 
 if __name__ == '__main__':
     warnings.filterwarnings("ignore")
-
-    print('Number of arguments:', len(sys.argv), 'arguments.')
     print('Argument List:', str(sys.argv))
+    print('1: (model persistency) create_model|load_from_file|')
+    print('2: (model validation) train_test|cross')
+    print('3: (feature selection) none|l1|l2')
+    print('4: (feature analysis) model_weights|no')
+
     df = load_dataset()
     X = df.loc[:, ['tweet_id', 'text']]
     y = df['Hate.speech'].to_frame()
     class_counts = pd.value_counts(y.values.flatten())
     class_counts.plot.bar(x='class values', y='ammount')
-    #plt.show()
-    print('num instances: ', len(X),'---',len(y))
-    print('creating train test split...')
+    plt.show()
+    print('num instances: ', len(X))
+    print('creating split...')
 
     (X_train, y_train, X_test, y_test)= create_split(X,y)
+
     print('Build pipeline..')
     #load_from_file
     #create_model
-    pipeline = build_pipeline(X_train, y_train,sys.argv[2])
+    pipeline = build_pipeline(X_train, y_train,sys.argv[1],sys.argv[2])
+    # train predictions
+    train_predictions = pipeline.predict(X_train)
+    # performance
+    datasetAccuracy = np.mean(train_predictions == y_train)
+    print('Train classification report..')
+    print("Train Accuracy= " + str(datasetAccuracy))
+    print(classification_report(y_train, train_predictions, target_names=['No hate', 'Hate']))
+    # Confusion Matrix table
 
-    if sys.argv[1] == 'evaluation':
-        print('starting evaluation..')
-        # train predictions
-        train_predictions = pipeline.predict(X_train)
-        # performance
-        datasetAccuracy = np.mean(train_predictions == y_train)
-        print("Train Accuracy= " + str(datasetAccuracy))
-        print('Train classification report..')
-        print(classification_report(y_train, train_predictions, target_names=['No hate','Hate']))
-        # Confusion Matrix table
-        print("\nTrain Confusion Matrix:")
-        cm_train = metrics.confusion_matrix(y_train, train_predictions)
-        print(cm_train)
-        df_cm = pd.DataFrame(cm_train, index=['real No','real Hate'],columns=['predicted No','predicted Hate'])
-        plt.figure(figsize=(10, 7))
-        sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g')
-        plt.show()
+    cm_train = metrics.confusion_matrix(y_train, train_predictions)
+    print("Train Confusion Matrix:\n",cm_train)
+    df_cm = pd.DataFrame(cm_train, index=['real No', 'real Hate'], columns=['predicted No', 'predicted Hate'])
+    plt.figure(figsize=(10, 7))
+    sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g')
+    plt.show()
+
+    if sys.argv[3] == 'train_test':
         # test predictions
         test_predictions = pipeline.predict(X_test)
         print('Test classification report..')
@@ -263,28 +266,51 @@ if __name__ == '__main__':
         plt.figure(figsize=(10, 7))
         sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g')
         plt.show()
+    if sys.argv[3] == 'cross':
+        predicted= cross_val_predict(pipeline, X_test, y_test, cv= 5, verbose=10 , n_jobs=5)
+        print('Test classification report..')
+        print(classification_report(y_test, predicted, target_names=['No hate', 'Hate']))
+        datasetAccuracy = np.mean(predicted == y_test)
+        print("Test Accuracy= " + str(datasetAccuracy))
+        # Confusion Matrix table
+        print("\nTest Confusion Matrix:")
+        cm_test = metrics.confusion_matrix(y_test, predicted)
+        print(cm_test)
+        df_cm = pd.DataFrame(cm_test, index=['real No', 'real Hate'], columns=['predicted No', 'predicted Hate'])
+        plt.figure(figsize=(10, 7))
+        sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g')
+        plt.show()
 
-    print('printing model weights..')
-    df = pd.DataFrame(columns=['feature_index', 'feature_name','feature_weight'])
     coefs = pipeline.named_steps['svc'].coef_
-    names = pipeline.named_steps['features'].get_feature_names()
-    #old 105328 # new 705
-    print('features created: ', len(names))
-    print('features used: ',len(coefs[0]))
-    for c in np.ndenumerate(coefs):
-        feature_id = c[0][1]
-        feature_weight = c[1]
-        df = df.set_value(feature_id, 'feature_index',feature_id)
-        df = df.set_value(feature_id, 'feature_weight', feature_weight)
-        for featureName in np.ndenumerate(names):
-            name_id = featureName[0][0]
-            if (name_id == feature_id):
-                feature_name = featureName[1]
-                df.set_value(feature_id, 'feature_name', feature_name)
-                break
+    print("dimensionality: %d" % coefs.shape[1])
+    print("density: %f" % density(coefs))
+    print('num features', len(coefs[0]))
 
-    df = df.sort_values( by=['feature_weight'])
-    df.to_csv('feature_weights.csv', sep='\t', encoding='utf-8')
+    if (sys.argv[4] == 'model_weights'):
+        df = pd.DataFrame(columns=['feature_index', 'feature_name','feature_weight'])
+
+
+        named_steps = pipeline.named_steps['features'].get_feature_names()
+        all_feature_names={}
+        for n in np.ndenumerate(named_steps):
+            id = n[0][0]
+            name = n[1]
+            all_feature_names[id] = name
+
+        print('features created: ', len(all_feature_names.keys()))
+
+        for c in np.ndenumerate(coefs):
+            feature_id = c[0][1]
+            feature_weight = c[1]
+            df = df.set_value(feature_id, 'feature_index',feature_id)
+            df = df.set_value(feature_id, 'feature_weight', feature_weight)
+            df = df.set_value(feature_id, 'feature_name', all_feature_names[feature_id])
+
+        df = df.sort_values( by=['feature_weight'])
+
+        print("top(no hate)\n", df.head(20))
+        print("top(hate)\n",df.tail(20))
+        #df.to_csv('feature_weights.csv', sep='\t', encoding='utf-8')
 
 
 
