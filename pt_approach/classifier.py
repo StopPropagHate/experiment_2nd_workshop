@@ -1,19 +1,26 @@
 import sys
 import numpy as np
 import pandas as pd
-
-import spacy
-import pt_core_news_sm
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
+
+
+import pt_core_news_sm
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+
 import nltk
+
 from nltk.stem.rslp import RSLPStemmer
+
 from sentimento import SentiLex
 from textstat.textstat import *
-import seaborn as sn
-import pickle
-from sklearn import metrics
 from sklearn.base import TransformerMixin, BaseEstimator
+
+import seaborn as sn
+
+from sklearn import metrics
+from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectFromModel
 from sklearn.model_selection import cross_val_predict
 from sklearn.utils.extmath import density
@@ -24,19 +31,18 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
 from sklearn.pipeline import FeatureUnion
 import warnings
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-
+from sklearn import preprocessing
 stopwords = nltk.corpus.stopwords.words("portuguese")
 other_exclusions = ["#ff", "ff", "rt"]
 stopwords.extend(other_exclusions)
 
 sentiment_analyzer = SentiLex()
 stemmer = RSLPStemmer()
-from sklearn import preprocessing
-nlp = pt_core_news_sm.load()
+
+
 
 class OtherTransformer(TransformerMixin, BaseEstimator):
 
@@ -46,7 +52,7 @@ class OtherTransformer(TransformerMixin, BaseEstimator):
     def transform(self,X,**transform_params):
         temp=[]
         for document in X:
-            features = other_features_(document[1])
+            features = other_features(document)
             temp.append(features)
 
         features = preprocessing.MinMaxScaler().fit_transform(np.array(temp))
@@ -59,12 +65,10 @@ class OtherTransformer(TransformerMixin, BaseEstimator):
     def get_feature_names(self):
         return sorted(OtherTransformer.feature_names)
 
-file = 'dataset/dataset_dummy_classes.csv'
-# returns items = {key:tweet_id: (text, hate.speech) }
-def load_dataset(file=file):
+
+def load_dataset(file):
     df = pd.read_csv(file)
     items = df.loc[:, ['tweet_id', 'text', 'Hate.speech']]
-    #5668
     return items
 
 def preprocess(text_string):
@@ -78,7 +82,7 @@ def preprocess(text_string):
     Without caring about specific people mentioned
     """
     #print('id: ' ,text_string[0])
-    text_string = text_string[1]
+    #text_string = text_string[1]
 
     space_pattern = '\s+'
     giant_url_regex = ('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|'
@@ -109,22 +113,20 @@ def tokenize(tweet):
     tweet = " ".join(re.split("[^a-zA-Z]*", tweet.lower())).strip()
     #tokens = re.split("[^a-zA-Z]*", tweet.lower())
     tokens = [stemmer.stem(t) for t in tweet.split()]
-    #print('tokenize: ', tokens)
     return tokens
 
 def basic_tokenize(tweet):
-
-    print('(basic_tokenize ) tweet ', tweet)
     """Same as tokenize but without the stemming"""
     tweet = " ".join(re.split("[^a-zA-Z.,!?]*", tweet.lower())).strip()
     tokens = [t for t in tweet.split()]
-    print('basic_tokenize: ', tokens)
     return tokens
 
 def get_pos_tags(tweet):
-    """Takes a list of strings (tweets) and
+    """
+    Takes a list of strings (tweets) and
     returns a list of strings of (POS tags).
     """
+    nlp = pt_core_news_sm.load()
     doc = nlp(tweet)
     tag_list = [w.pos_ for w in doc]
     return tag_list
@@ -153,7 +155,7 @@ def count_twitter_objs(text_string):
     parsed_text = re.sub(hashtag_regex, 'HASHTAGHERE', parsed_text)
     return(parsed_text.count('URLHERE'),parsed_text.count('MENTIONHERE'),parsed_text.count('HASHTAGHERE'))
 
-def other_features_(tweet):
+def other_features(tweet):
     """This function takes a string and returns a list of features.
     These include Sentiment scores, Text and Readability scores,
     as well as Twitter specific features.
@@ -183,8 +185,6 @@ def other_features_(tweet):
 def build_pipeline(X,y,mode='load_from_file',selection_mode= 'none',):
 
     filename = 'pt_classifier_joblib.pkl'
-
-
     if mode== 'create_model':
         #create transformers
         vectorizer = TfidfVectorizer(analyzer='word', tokenizer=tokenize,preprocessor=preprocess,ngram_range=(1, 3),lowercase=True, max_features=30000, stop_words=stopwords)
@@ -220,14 +220,12 @@ if __name__ == '__main__':
     print('3: (feature selection) none|l1|l2')
     print('4: (feature analysis) model_weights|no')
 
-    df = load_dataset()
+    df = load_dataset('dataset/dataset_dummy_classes.csv')
     X = df.loc[:, ['tweet_id', 'text']]
     y = df['Hate.speech'].to_frame()
     class_counts = pd.value_counts(y.values.flatten())
     class_counts.plot.bar(x='class values', y='ammount')
     plt.show()
-    print('num instances: ', len(X))
-    print('creating split...')
 
     (X_train, y_train, X_test, y_test)= create_split(X,y)
 
