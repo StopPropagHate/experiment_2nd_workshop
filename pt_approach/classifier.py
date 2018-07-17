@@ -10,7 +10,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 import nltk
-
 from nltk.stem.rslp import RSLPStemmer
 
 from sentimento import SentiLex

@@ -11,17 +11,17 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/pt_approach$run.coverage" NAME="run Coverage Results" MODIFIED="1530293179699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pt_approach$pt_approach.coverage" NAME="pt_approach Coverage Results" MODIFIED="1531833403417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/pt_approach$pt_approach.coverage" NAME="pt_approach Coverage Results" MODIFIED="1531840117769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="classifier.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="187">
+              <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="33" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#1078#1725#0" />
                 <element signature="e#1342#1520#0" />
                 <element signature="e#1574#1585#0" />
                 <element signature="e#1680#1725#0" />
@@ -31,21 +31,13 @@
                 <element signature="e#3263#3327#0" />
                 <element signature="e#3233#3579#0" />
                 <element signature="e#3750#3927#0" />
+                <element signature="e#4240#5170#0" />
                 <element signature="e#5204#6541#0" />
                 <element signature="e#6681#8510#0" />
                 <element signature="e#9227#9961#0" />
                 <element signature="e#11456#12602#0" />
                 <element signature="e#11865#12155#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="final.ipynb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/final.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="33" />
             </state>
           </provider>
         </entry>
@@ -123,6 +115,7 @@
       <find>accuracy</find>
       <find>SentiLex num lines: 7012</find>
       <find>print</find>
+      <find>twitter</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -142,8 +135,8 @@
         <option value="$PROJECT_DIR$/test_tfidf.py" />
         <option value="$PROJECT_DIR$/test_pos.py" />
         <option value="$PROJECT_DIR$/test_other.py" />
-        <option value="$PROJECT_DIR$/classifier.py" />
         <option value="$PROJECT_DIR$/final.ipynb" />
+        <option value="$PROJECT_DIR$/classifier.py" />
       </list>
     </option>
   </component>
@@ -472,7 +465,7 @@
         <state relative-caret-position="2754">
           <caret line="184" column="102" selection-start-line="184" selection-start-column="102" selection-end-line="184" selection-end-column="102" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#1078#1725#0" />
             <element signature="e#1342#1520#0" />
             <element signature="e#1574#1585#0" />
             <element signature="e#1680#1725#0" />
@@ -482,6 +475,7 @@
             <element signature="e#3263#3327#0" />
             <element signature="e#3233#3579#0" />
             <element signature="e#3750#3927#0" />
+            <element signature="e#4240#5170#0" />
             <element signature="e#5204#6541#0" />
             <element signature="e#6681#8510#0" />
             <element signature="e#9227#9961#0" />
@@ -548,7 +542,7 @@
         <state relative-caret-position="3468">
           <caret line="212" column="25" lean-forward="true" selection-start-line="212" selection-start-column="25" selection-end-line="212" selection-end-column="25" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#1078#1725#0" />
             <element signature="e#1342#1520#0" />
             <element signature="e#1574#1585#0" />
             <element signature="e#1680#1725#0" />
@@ -558,6 +552,7 @@
             <element signature="e#3263#3327#0" />
             <element signature="e#3233#3579#0" />
             <element signature="e#3750#3927#0" />
+            <element signature="e#4240#5170#0" />
             <element signature="e#5204#6541#0" />
             <element signature="e#6681#8510#0" />
             <element signature="e#9227#9961#0" />
@@ -582,7 +577,7 @@
         <state relative-caret-position="1003">
           <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#1078#1725#0" />
             <element signature="e#1342#1520#0" />
             <element signature="e#1574#1585#0" />
             <element signature="e#1680#1725#0" />
@@ -592,6 +587,7 @@
             <element signature="e#3263#3327#0" />
             <element signature="e#3233#3579#0" />
             <element signature="e#3750#3927#0" />
+            <element signature="e#4240#5170#0" />
             <element signature="e#5204#6541#0" />
             <element signature="e#6681#8510#0" />
             <element signature="e#9227#9961#0" />
@@ -808,10 +804,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
+        <state relative-caret-position="187">
+          <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="33" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#1078#1725#0" />
             <element signature="e#1342#1520#0" />
             <element signature="e#1574#1585#0" />
             <element signature="e#1680#1725#0" />
@@ -821,6 +817,7 @@
             <element signature="e#3263#3327#0" />
             <element signature="e#3233#3579#0" />
             <element signature="e#3750#3927#0" />
+            <element signature="e#4240#5170#0" />
             <element signature="e#5204#6541#0" />
             <element signature="e#6681#8510#0" />
             <element signature="e#9227#9961#0" />
